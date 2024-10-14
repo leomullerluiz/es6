@@ -10,7 +10,7 @@ O protocolo iterable é utilizado para definir e personalizar o comportamento de
 
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (const digit of digits) {
-  console.log(digit);
+    console.log(digit);
 }
 
 // Se você se lembra da aula 1, qualquer objeto que é um iterable pode usar o novo loop for...of. Ao longo desta aula, você também aprenderá sobre Sets e Maps, que são outros exemplos de iterables nativos da linguagem.
@@ -61,14 +61,14 @@ const james2 = {
                 const key = keys[i++];
                 const value = this[key];
                 const done = i >= keys.length;
-                return { key, value, done};
+                return { key, value, done };
             }
         };
     }
- };
- let iterator = james[Symbol.iterator]();
+};
+let iterator = james[Symbol.iterator]();
 
- 
+
 
 
 

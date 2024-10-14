@@ -22,30 +22,30 @@ console.log(sym2 === sym3);
 // Isso pode ser algo difícil de compreender, então, vamos utilizar um exemplo do vídeo anterior para ver como os symbols podem ser úteis. Este é o código que representa o objeto bowl do exemplo:
 
 const bowl = {
-    'apple': { color: 'red', weight: 136.078 },
-    'banana': { color: 'yellow', weight: 183.15 },
-    'orange': { color: 'orange', weight: 170.097 }
-  };
+  'apple': { color: 'red', weight: 136.078 },
+  'banana': { color: 'yellow', weight: 183.15 },
+  'orange': { color: 'orange', weight: 170.097 }
+};
 
 //   O bowl contém frutas que são objetos e que, por sua vez, são propriedades do bowl. Porém, com isso, teremos um problema quando uma segunda banana for adicionada.
 
 const bowl2 = {
-    'apple': { color: 'red', weight: 136.078 },
-    'banana': { color: 'yellow', weight: 183.151 },
-    'orange': { color: 'orange', weight: 170.097 },
-    'banana': { color: 'yellow', weight: 176.845 }
-  };
-  console.log(bowl2);
+  'apple': { color: 'red', weight: 136.078 },
+  'banana': { color: 'yellow', weight: 183.151 },
+  'orange': { color: 'orange', weight: 170.097 },
+  'banana': { color: 'yellow', weight: 176.845 }
+};
+console.log(bowl2);
 // Output: Object {apple: Object, banana: Object, orange: Object}
 
 // Em vez de adicionar outra banana ao bowl, nossa primeira banana é sobrescrita pela nova. Para resolver esse problema, podemos utilizar os symbols.
 
 const bowl3 = {
-    [Symbol('apple')]: { color: 'red', weight: 136.078 },
-    [Symbol('banana')]: { color: 'yellow', weight: 183.15 },
-    [Symbol('orange')]: { color: 'orange', weight: 170.097 },
-    [Symbol('banana')]: { color: 'yellow', weight: 176.845 }
-  };
-  console.log(bowl3);
+  [Symbol('apple')]: { color: 'red', weight: 136.078 },
+  [Symbol('banana')]: { color: 'yellow', weight: 183.15 },
+  [Symbol('orange')]: { color: 'orange', weight: 170.097 },
+  [Symbol('banana')]: { color: 'yellow', weight: 176.845 }
+};
+console.log(bowl3);
 // Output: Object {Symbol(apple): Object, Symbol(banana): Object, Symbol(orange): Object, Symbol(banana): Object}
 //Alterando as propriedades do bowl para utilizar symbols, cada propriedade é um Symbol único e a primeira banana não será sobrescrita pela segunda.
