@@ -30,21 +30,21 @@ class IceCream extends Dessert {
 // Revisão de classes em ES
 //Sabendo que as classes no ES6 são apenas uma miragem e escondem o fato de que, por debaixo dos panos, ocorre herança via prototypes , vamos dar uma olhada rápida em como criar classes com código ES5
 
-function Plane(numEngines) {
+function PlaneES5(numEngines) {
     this.numEngines = numEngines;
     this.enginesActive = false;
 }
 
 // methods "inherited" by all instances
-Plane.prototype.startEngines = function () {
+PlaneES5.prototype.startEngines = function () {
     console.log('starting engines...');
     this.enginesActive = true;
 };
 
-const richardsPlane = new Plane(1);
+const richardsPlane = new PlaneES5(1);
 richardsPlane.startEngines();
 
-const jamesPlane = new Plane(4);
+const jamesPlane = new PlaneES5(4);
 jamesPlane.startEngines();
 
 
@@ -76,7 +76,7 @@ class Plane {
 // Class é apenas uma função
 //Apenas para provar que não há nada de especial com a palvra reservada class no ES6, dê uma olhada neste código
 
-class Plane {
+class Plane2 {
     constructor(numEngines) {
         this.numEngines = numEngines;
         this.enginesActive = false;
@@ -88,14 +88,14 @@ class Plane {
     }
 }
 
-typeof Plane; // output: function,
+typeof Plane2; // output: function,
 
 
 // Métodos estáticos
 
 // Para criar um método estático, coloca-se a palavra reservada static antes do nome do método. Veja o método badWeather() no código a seguir.
 
-class Plane {
+class Plane3 {
     constructor(numEngines) {
         this.numEngines = numEngines;
         this.enginesActive = false;
@@ -141,7 +141,11 @@ class Toy {
     //...
 }
 
-const myToy1 = Toy(); // throws an error
+try {
+    const myToy1 = Toy(); // throws an error
+} catch (e) {
+    console.error(e);
+}
 // Output: Uncaught TypeError: Class constructor Toy cannot be invoked without 'new'
 
 
@@ -199,40 +203,40 @@ myMaple.changeSeason('spring');
 // Comparando com as subclasses do ES5
 // Vamos ver a mesma funcionalidade, agora escrita em código ES5:
 
-function Tree(size, leaves) {
+function TreeES5(size, leaves) {
     this.size = (typeof size === "undefined")? 10 : size;
     const defaultLeaves = {spring: 'green', summer: 'green', fall: 'orange', winter: null};
     this.leaves = (typeof leaves === "undefined")?  defaultLeaves : leaves;
     this.leafColor;
   }
-  
-  Tree.prototype.changeSeason = function(season) {
+
+  TreeES5.prototype.changeSeason = function(season) {
     this.leafColor = this.leaves[season];
     if (season === 'spring') {
       this.size += 1;
     }
   }
-  
-  function Maple (syrupQty, size, leaves) {
-    Tree.call(this, size, leaves);
+
+  function MapleES5 (syrupQty, size, leaves) {
+    TreeES5.call(this, size, leaves);
     this.syrupQty = (typeof syrupQty === "undefined")? 15 : syrupQty;
   }
-  
-  Maple.prototype = Object.create(Tree.prototype);
-  Maple.prototype.constructor = Maple;
-  
-  Maple.prototype.changeSeason = function(season) {
-    Tree.prototype.changeSeason.call(this, season);
+
+  MapleES5.prototype = Object.create(TreeES5.prototype);
+  MapleES5.prototype.constructor = MapleES5;
+
+  MapleES5.prototype.changeSeason = function(season) {
+    TreeES5.prototype.changeSeason.call(this, season);
     if (season === 'spring') {
       this.syrupQty += 1;
     }
   }
-  
-  Maple.prototype.gatherSyrup = function() {
+
+  MapleES5.prototype.gatherSyrup = function() {
     this.syrupQty -= 3;
   }
-  
-  const myMaple2 = new Maple(15, 5);
+
+  const myMaple2 = new MapleES5(15, 5);
   myMaple2.changeSeason('fall');
   myMaple2.gatherSyrup();
   myMaple2.changeSeason('spring');
