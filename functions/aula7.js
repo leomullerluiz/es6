@@ -40,13 +40,15 @@ class Vehicle {
 	}
 }
 
+// your code goes here
+
+// Solução:
+
 class Bicycle extends Vehicle {
 	constructor(color, wheels = 2, horn = 'honk honk') {
 		super(color, wheels, horn);
 	}
 }
-
-// your code goes here
 
 /* testing */
 

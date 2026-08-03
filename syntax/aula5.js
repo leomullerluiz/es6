@@ -48,7 +48,7 @@ O for...in loop reduz as fraquezas do for loop, eliminando a contagem lógica e 
 const digits2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 for (const index in digits2) {
-    console.log(digits[index]);
+    console.log(digits2[index]);
 }
 /*
 Output:
@@ -78,7 +78,7 @@ Array.prototype.decimalfy = function () {
 const digits3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 for (const index in digits3) {
-    console.log(digits[index]);
+    console.log(digits3[index]);
 }
 
 /*
